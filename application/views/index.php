@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Ingreso Usuario 2</title>
+	<title>Ingreso Usuario 22222</title>
 	<link rel="stylesheet" href="/clases/css/estilos.css">
 	
 </head>
