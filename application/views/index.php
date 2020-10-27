@@ -28,7 +28,7 @@
 		<a href="/clases/index.php/home/registro">Registro</a>
 		
 
-	</from>
+	</form>
 
 
 	</div>
