@@ -67,6 +67,25 @@ class Login extends CI_Model{
   }
 
 
+  public function valida_cuenta($usuario,$correo,$rut){
+    $query = "select * from usuario where rut_usuario='".$rut."' and correo_usuario='".$correo."' and usuario='".$usuario."'";
+    
+    $query=$this->db->query($query);
+    if($query->num_rows() >0)
+    {
+      foreach ($query->result() as $fila) 
+      {
+        $data[] = $fila;
+      }
+      return $data[0];
+    }
+    else
+    {
+      return false;
+    } 
+  }
+
+
   public function guardar_usuario($usuario, $correo, $contrasena, $rut, $direccion)
   {
 
@@ -118,6 +137,8 @@ class Login extends CI_Model{
 
   public function cambiarContrasena($token,$contrasena)
   {
+      
+      if($token != 1){     
 
     $query = "select id_usuario from usuario where token_usuario ='".$token."'";
     $query=$this->db->query($query);
@@ -142,6 +163,11 @@ class Login extends CI_Model{
     else{
       return false;
     } 
+  } else {
+
+      return false;
+
+  }
     
   }
 

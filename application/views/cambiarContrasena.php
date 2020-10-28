@@ -25,7 +25,7 @@
         <label for="pass2">Repite contraseña</label>
 		<input type="password" id="contrasena2" name="contrasena2" required>
 
-		<input class="boton" type="submit" name="submit" value="REGISTRAR"/>
+		<input class="boton" type="submit" name="submit" value="CAMBIAR CONTRASEÑA"/>
 
 		
 	</from>

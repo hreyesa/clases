@@ -12,7 +12,7 @@
  	<div class="registro">
 
 	 <img class="logo" src="/clases/imagenes/logo_caracol.jpg" alt="logo caracol">
-	 <h1>Registro</h1>
+	 <h1>Recuperar Contraseña</h1>
 
 	 <form action="/clases/index.php/usuario/recuperar_contrasena" method="post">
 

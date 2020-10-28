@@ -818,11 +818,7 @@ class Mailin
   protected function _arrayToUrlPartThree($array, $token)
   {
     $string = "";
-    if(count($array) > 0) {
-        foreach ($array as $k => $value) {
-                $string.= "&" . $token . "[$k][basename]=" . urlencode($value['basename'])."&" . $token . "[$k][extension]=" . urlencode($value['extension']);
-        }
-    }
+
     return $string;
   } 
   

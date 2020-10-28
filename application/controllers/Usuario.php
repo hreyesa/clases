@@ -109,19 +109,20 @@ class Usuario extends CI_Controller {
 		$correo = $this->input->post("correo");
 		$asunto = 'Recuperar contraseña';
 		
-		$objUsuario = $this->Login->valida_usuario($usuario);
-		$objRut = $this->Login->valida_rut($rut);
-		$objCorreo = $this->Login->valida_correo($correo);
+		//$objUsuario = $this->Login->valida_usuario($usuario);
+		//$objRut = $this->Login->valida_rut($rut);
+		//$objCorreo = $this->Login->valida_correo($correo);
+		$objCuenta = $this->Login->valida_cuenta($usuario,$correo,$rut);
 
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $token = '';
         for ($i = 0; $i < 20; $i++) {
             $token .= $characters[rand(0, strlen($characters))];
         }
-				echo $token;
-		if(!$objUsuario && !$objCorreo && !$objRut) //false
+				
+		if(!$objCuenta) //false
 		{
-			echo json_encode('El usuario y RUT no existe');
+			echo json_encode('RUT o correo no corresponden al usuario ingresado');
 
 		}
 		else
@@ -136,14 +137,14 @@ class Usuario extends CI_Controller {
 			$mailin = new Mailin('hreyes.albornoz@gmail.com', '7HqtjN1QGKZ6OwJv');
 			$mailin->
 			addTo($correo, $usuario)->
-			setFrom('noreply@caracolab.cl', 'Caacol-lab')->
-			setReplyTo('noreply@caracolab.cl', 'Caacol-lab')->
+			setFrom('noreply@caracolab.cl', 'Caracol-lab')->
+			setReplyTo('noreply@caracolab.cl', 'Caracol-lab')->
 			setSubject($asunto)->
 			setText($mensaje)->
 			setHtml('<head><title>'.$asunto.'</title></head>'.
 			  '<body> <p>Nombre contacto: '.$usuario.
-			  '</p><p> Correo Electronico solicitante:'.$correo.
-			  '</p><p> Mensaje:'.$mensaje.
+			  '</p><p> Correo Electronico solicitante: '.$correo.
+			  '</p><p> Mensaje: '.$mensaje.
 			  '</P> </body>');
 			$res = $mailin->send();	
 	
